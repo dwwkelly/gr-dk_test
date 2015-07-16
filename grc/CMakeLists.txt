@@ -19,5 +19,7 @@
 
 install(FILES
     dk_test_burster.xml
-    dk_test_tag_filter.xml DESTINATION share/gnuradio/grc/blocks
+    dk_test_tag_filter.xml
+    dk_test_phase_rotator.xml
+    DESTINATION share/gnuradio/grc/blocks
 )
