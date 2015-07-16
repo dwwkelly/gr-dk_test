@@ -22,5 +22,5 @@
 ########################################################################
 install(FILES
     api.h
-    DESTINATION include/dk_test
+    phase_rotator_2.h DESTINATION include/dk_test
 )
