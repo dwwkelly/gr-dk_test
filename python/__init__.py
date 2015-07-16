@@ -33,4 +33,6 @@ except ImportError:
 # import any pure python here
 from burster import burster
 from tag_filter import tag_filter
+from phase_rotator import phase_rotator
+from phase_rotator_1 import phase_rotator_1
 #

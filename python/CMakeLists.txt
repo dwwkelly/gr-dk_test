@@ -32,7 +32,8 @@ GR_PYTHON_INSTALL(
     FILES
     __init__.py
     burster.py
-    tag_filter.py DESTINATION ${GR_PYTHON_DIR}/dk_test
+    tag_filter.py
+    phase_rotator.py DESTINATION ${GR_PYTHON_DIR}/dk_test
 )
 
 ########################################################################
@@ -44,3 +45,4 @@ set(GR_TEST_TARGET_DEPS gnuradio-dk_test)
 set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
 GR_ADD_TEST(qa_burster ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_burster.py)
 GR_ADD_TEST(qa_tag_filter ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_tag_filter.py)
+GR_ADD_TEST(qa_phase_rotator ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_phase_rotator.py)
