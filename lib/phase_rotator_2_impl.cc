@@ -44,7 +44,7 @@ namespace gr {
               gr::io_signature::make(1, 8192, sizeof(gr_complex)),
               gr::io_signature::make(1, 8192, sizeof(gr_complex)))
     {
-        this->angle = angle;
+        set_angle(angle);
     }
 
     /*
@@ -89,7 +89,7 @@ namespace gr {
                 theta = atan2(x, y);
 
                 // Add the phase offset
-                theta -= theta - this->angle;
+                theta -= angle();
 
                 // Back to rectangular co-ordinates
                 a = r * cos(theta);
@@ -103,6 +103,8 @@ namespace gr {
         return noutput_items;
     }
 
+
   } /* namespace dk_test */
+
 } /* namespace gr */
 

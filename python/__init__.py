@@ -25,14 +25,12 @@ description here (python/__init__.py).
 
 # import swig generated symbols into the dk_test namespace
 try:
-	# this might fail if the module is python-only
-	from dk_test_swig import *
+    # this might fail if the module is python-only
+    from dk_test_swig import *
 except ImportError:
-	pass
+    pass
 
 # import any pure python here
 from burster import burster
 from tag_filter import tag_filter
 from phase_rotator import phase_rotator
-from phase_rotator_1 import phase_rotator_1
-#

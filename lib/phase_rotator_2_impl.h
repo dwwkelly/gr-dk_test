@@ -29,7 +29,7 @@ namespace gr {
     class phase_rotator_2_impl : public phase_rotator_2
     {
      private:
-         float angle;
+         float d_angle;
 
      public:
       phase_rotator_2_impl(float angle);
@@ -37,6 +37,14 @@ namespace gr {
 
       // Where all the action really happens
       void forecast (int noutput_items, gr_vector_int &ninput_items_required);
+
+      void set_angle(float angle) {
+          d_angle = angle;
+      }
+
+      float angle() const {
+          return d_angle;
+      }
 
       int general_work(int noutput_items,
 		       gr_vector_int &ninput_items,

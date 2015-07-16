@@ -1,18 +1,16 @@
 <?xml version="1.0"?>
 <block>
-  <name>phase_rotator_2</name>
-  <key>dk_test_phase_rotator_2</key>
+  <name>phase_rotator</name>
+  <key>dk_test_phase_rotator</key>
   <category>dk_test</category>
   <import>import dk_test</import>
-  <make>dk_test.phase_rotator_2($angle)</make>
+  <make>dk_test.phase_rotator($angle)</make>
   <callback>set_angle($angle)</callback>
-
   <param>
     <name>Phase</name>
     <key>angle</key>
     <type>float</type>
   </param>
-
   <sink>
     <name>in</name>
     <type>complex</type>
