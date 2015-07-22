@@ -80,16 +80,13 @@ namespace gr {
         for (ii=0; ii < ninput_items.size(); ii++){
             x = in[ii].real();
             y = in[ii].imag();
-            if (x == 0 && y == 0.0) {
+            if (x == 0.0 && y == 0.0) {
                 out[ii] = gr_complex(0.0, 0.0);
             } else {
 
                 // Get polar co-ordinates
                 r = sqrt(pow(x, 2) + pow(y, 2));
-                theta = atan2(x, y);
-
-                // Add the phase offset
-                theta -= angle();
+                theta = atan2(x, y) - angle();
 
                 // Back to rectangular co-ordinates
                 a = r * cos(theta);
@@ -99,8 +96,8 @@ namespace gr {
             }
         }
 
-        consume_each (noutput_items);
-        return noutput_items;
+        consume_each(ninput_items.size());
+        return ninput_items.size();
     }
 
 
