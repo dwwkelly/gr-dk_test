@@ -28,14 +28,24 @@ class burster(gr.basic_block):
     """
     docstring for block burster
     """
-    def __init__(self):
+    def __init__(self,
+                 start_sample=0,
+                 start_tag='tx_sob',
+                 end_sample=2500,
+                 end_tag='tx_eob'):
         gr.basic_block.__init__(self,
                                 name="burster",
                                 in_sig=[numpy.float],
                                 out_sig=[numpy.float])
 
-        self.forward = True
+        self.set_start_sample(start_sample)
+        self.set_start_tag(start_tag)
+        self.set_end_sample(end_sample)
+        self.set_end_tag(end_tag)
+
+        self.forward = False
         self.offset = 0
+        self.last_tagged_sample = 0
 
     def forecast(self, noutput_items, ninput_items_required):
         # setup size of input_items[i] for work call
@@ -50,22 +60,50 @@ class burster(gr.basic_block):
         out0 = output_items[0]
 
         for ii in range(noutput_items):
-            if ii % 2500 == 0 and self.forward:
-                k = pmt.string_to_symbol('tx_sob')
+            if ii % self.start_sample() == 0 and self.forward:
+                k = pmt.string_to_symbol(self.start_tag())
                 v = pmt.PMT_T
                 src = pmt.string_to_symbol('burster')
                 self.add_item_tag(0, self.offset, k, v, src)
-                self.offset += 2500
+                self.offset += self.start_sample()
                 self.forward = not self.forward
-            elif ii % 2500 == 0 and not self.forward:
-                k = pmt.string_to_symbol('tx_eob')
+            elif ii % self.end_sample() == 0 and not self.forward:
+                k = pmt.string_to_symbol(self.end_tag())
                 v = pmt.PMT_T
                 src = pmt.string_to_symbol('burster')
                 self.add_item_tag(0, self.offset, k, v, src)
                 self.forward = not self.forward
-                self.offset += 2500
+                self.offset += self.end_sample()
 
         nitems_to_consume = min(ninput_items, noutput_items)
         out0[:nitems_to_consume] = in0[:nitems_to_consume]
         self.consume(0, nitems_to_consume)
         return noutput_items
+
+    def set_start_sample(self, samp_num):
+        if samp_num == 0:
+            samp_num = 1
+        self.start_samp_num = samp_num
+
+    def start_sample(self):
+        return self.start_samp_num
+
+    def set_start_tag(self, tag):
+        self.d_start_tag = tag
+
+    def start_tag(self):
+        return self.d_start_tag
+
+    def set_end_sample(self, samp_num):
+        if samp_num <= self.start_sample():
+            samp_num = self.start_sample() + 1
+        self.end_samp_num = samp_num
+
+    def end_sample(self):
+        return self.end_samp_num
+
+    def set_end_tag(self, tag):
+        self.d_end_tag = tag
+
+    def end_tag(self):
+        return self.d_end_tag
