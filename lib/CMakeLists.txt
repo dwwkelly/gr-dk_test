@@ -28,6 +28,7 @@ link_directories(${Boost_LIBRARY_DIRS})
 list(APPEND dk_test_sources
     phase_rotator_2_impl.cc
     psk_dd_eq_cpp_impl.cc
+    tagged_energy_detector_impl.cc
 )
 
 set(dk_test_sources "${dk_test_sources}" PARENT_SCOPE)

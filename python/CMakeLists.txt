@@ -48,3 +48,4 @@ GR_ADD_TEST(qa_tag_filter ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_ta
 GR_ADD_TEST(qa_phase_rotator ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_phase_rotator.py)
 GR_ADD_TEST(qa_phase_rotator_2 ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_phase_rotator_2.py)
 GR_ADD_TEST(qa_psk_dd_eq_cpp ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_psk_dd_eq_cpp.py)
+GR_ADD_TEST(qa_tagged_energy_detector ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_tagged_energy_detector.py)

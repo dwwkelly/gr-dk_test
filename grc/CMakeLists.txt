@@ -22,5 +22,6 @@ install(FILES
     dk_test_tag_filter.xml
     dk_test_phase_rotator.xml
     dk_test_phase_rotator_2.xml
-    dk_test_psk_dd_eq_cpp.xml DESTINATION share/gnuradio/grc/blocks
+    dk_test_psk_dd_eq_cpp.xml
+    dk_test_tagged_energy_detector.xml DESTINATION share/gnuradio/grc/blocks
 )

@@ -23,5 +23,6 @@
 install(FILES
     api.h
     phase_rotator_2.h
-    psk_dd_eq_cpp.h DESTINATION include/dk_test
+    psk_dd_eq_cpp.h
+    tagged_energy_detector.h DESTINATION include/dk_test
 )

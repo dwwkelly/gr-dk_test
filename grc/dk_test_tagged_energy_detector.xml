@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<block>
+  <name>tagged_energy_detector</name>
+  <key>dk_test_tagged_energy_detector</key>
+  <category>dk_test</category>
+  <import>import dk_test</import>
+  <make>dk_test.tagged_energy_detector($threshold, $fft_size)</make>
+
+  <callback>set_fft_size($fft_size)</callback>
+  <callback>set_threshold($threshold)</callback>
+
+  <param>
+    <name>Threshold (dB)</name>
+    <key>threshold</key>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>FFT Size</name>
+    <key>fft_size</key>
+    <type>int</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+</sink>
+
+  <source>
+    <name>out</name>
+    <type>complex</type>
+</source>
+
+</block>
