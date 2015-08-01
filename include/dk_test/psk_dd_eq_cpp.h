@@ -1,17 +1,17 @@
 /* -*- c++ -*- */
-/* 
+/*
  * Copyright 2015 <+YOU OR YOUR COMPANY+>.
- * 
+ *
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3, or (at your option)
  * any later version.
- * 
+ *
  * This software is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this software; see the file COPYING.  If not, write to
  * the Free Software Foundation, Inc., 51 Franklin Street,
@@ -47,6 +47,20 @@ namespace gr {
        * creating new instances.
        */
       static sptr make(int M);
+
+      /*!
+       * \brief Set the order of the PSK modulation scheme
+       *
+       * Set M for the order of the modulation scheme, e.g. M = 2 is for
+       * BPSK, M = 4 for QPSK, etc.  Note: Constellations for QPSK are
+       * [1, 1j, -1, -1j]
+       */
+      virtual void set_M(int M) = 0;
+
+      /*!
+       * \brief Get the modulation order
+       */
+      virtual int M() const = 0;
     };
 
   } // namespace dk_test
