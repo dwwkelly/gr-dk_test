@@ -32,8 +32,7 @@ namespace gr {
     phase_rotator_2::sptr
     phase_rotator_2::make(float angle)
     {
-      return gnuradio::get_initial_sptr
-        (new phase_rotator_2_impl(angle));
+      return gnuradio::get_initial_sptr (new phase_rotator_2_impl(angle));
     }
 
     /*
